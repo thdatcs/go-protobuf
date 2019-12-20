@@ -1,0 +1,1 @@
+make proto-file="dto_user.proto model_user.proto api_user.proto api_ping.proto" gen-api

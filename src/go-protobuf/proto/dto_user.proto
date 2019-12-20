@@ -1,0 +1,29 @@
+syntax = "proto3";
+package api;
+
+message GetUserRequest {
+    string username = 1;
+}
+
+message GetUserResponse {
+    string username = 1;
+    string password = 2;
+    string fullname = 3;
+}
+
+message CreateUserRequest {
+    string username = 1;
+    string password = 2;
+    string fullname = 3;
+}
+
+
+message UpdateUserRequest {
+    string username = 1;
+    string password = 2;
+    string fullname = 3;
+}
+
+message DeleteUserRequest {
+    string username = 1;
+}

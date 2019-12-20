@@ -1,0 +1,23 @@
+syntax = "proto3";
+package api;
+
+import "protoc-gen-swagger/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+  info: {
+      title: "Auth System";
+      version: "1.0";
+  };
+  schemes: HTTP;
+  consumes: "application/json";
+  security_definitions: {
+      security: {
+          key: "APIKeyAuthentication";
+          value: {
+              type: TYPE_API_KEY;
+              in: IN_HEADER;
+              name: "Authorization";
+          }
+      }
+  }
+};
