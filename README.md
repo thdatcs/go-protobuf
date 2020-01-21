@@ -1,7 +1,7 @@
 ## Docker commands
 - Build image: `docker build -t [image name] -f [docker file] .`
 - Run image: `docker run [image name]`
-- Access image: `docker run -it [image name] sh`
+- Access container: `docker exec -it [image name] sh`
 
 ## Dev project
 - Navigate to project source folder
@@ -19,4 +19,4 @@
 - Setup environment (MySQL/Redis/Kafka/Jaeger): `docker-compose up`
 - Run database script `src/[project name]/migrations/*.sql`
 - Build image: `docker build -t [image name] -f [docker file] .`
-- Run image: `docker run --network=host [image name]`
+- Run image: `docker run --network=host --volume [path]/config.yml:/app/config.yaml [image name]`
