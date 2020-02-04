@@ -1,5 +1,5 @@
 pipeline {
-    environtment {
+    environment {
         registryURL = 'https://registry.hub.docker.com'
         registryCredential = 'docker-credential'
         registryRepository = 'thdatcs/go-protobuf'
