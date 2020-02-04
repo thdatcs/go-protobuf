@@ -8,6 +8,7 @@
 - Generate api `./proto/_gen_corepb.sh`
 - Generate swagger `make gen-swagger`
 - Implement api
+- Testing api
 
 ## Run project
 ### 1. Requirements

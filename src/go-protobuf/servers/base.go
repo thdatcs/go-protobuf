@@ -1,14 +1,14 @@
 package servers
 
 import (
-	"database/sql"
 	"go-protobuf/configs"
 	"go-protobuf/repositories/caches"
+	"go-protobuf/repositories/databases"
 )
 
 // BaseServer is base server
 type BaseServer struct {
 	config *configs.Config
-	db     *sql.DB
+	db     databases.DB
 	cache  caches.Cache
 }

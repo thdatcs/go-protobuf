@@ -1,4 +1,5 @@
-FROM golang:1.12.7 as builder
+FROM golang as builder
+LABEL stage=builder
 ADD . /go
 WORKDIR /go
 RUN make prepare && \

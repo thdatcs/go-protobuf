@@ -19,7 +19,7 @@ import (
 type userServer struct {
 	BaseServer
 	config       *configs.Config
-	db           *sql.DB
+	db           databases.DB
 	cache        caches.Cache
 	queue        queues.Queue
 	userDatabase databases.UserDatabase
@@ -28,7 +28,7 @@ type userServer struct {
 // NewUserServer creates a new instance
 func NewUserServer(
 	config *configs.Config,
-	db *sql.DB,
+	db databases.DB,
 	cache caches.Cache,
 	queue queues.Queue,
 	userDatabase databases.UserDatabase,
@@ -61,9 +61,9 @@ func (s *userServer) GetUser(ctx context.Context, request *api.GetUserRequest) (
 	}
 	defer func() {
 		if err != nil {
-			_ = tx.Rollback()
+			_ = s.db.Rollback(tx)
 		} else {
-			_ = tx.Commit()
+			_ = s.db.Commit(tx)
 		}
 	}()
 
@@ -94,9 +94,9 @@ func (s *userServer) CreateUser(ctx context.Context, request *api.CreateUserRequ
 	}
 	defer func() {
 		if err != nil {
-			_ = tx.Rollback()
+			_ = s.db.Rollback(tx)
 		} else {
-			_ = tx.Commit()
+			_ = s.db.Commit(tx)
 		}
 	}()
 
@@ -123,9 +123,9 @@ func (s *userServer) UpdateUser(ctx context.Context, request *api.UpdateUserRequ
 	}
 	defer func() {
 		if err != nil {
-			_ = tx.Rollback()
+			_ = s.db.Rollback(tx)
 		} else {
-			_ = tx.Commit()
+			_ = s.db.Commit(tx)
 		}
 	}()
 
@@ -149,9 +149,9 @@ func (s *userServer) DeleteUser(ctx context.Context, request *api.DeleteUserRequ
 	}
 	defer func() {
 		if err != nil {
-			_ = tx.Rollback()
+			_ = s.db.Rollback(tx)
 		} else {
-			_ = tx.Commit()
+			_ = s.db.Commit(tx)
 		}
 	}()
 

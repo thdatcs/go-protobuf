@@ -90,11 +90,12 @@ func main() {
 	// Init queue
 	kafkaQueue := queues.NewKafkaQueue(asyncProducers, topics)
 	// Init database
+	defaultDB := databases.NewDefaultDB(mysql)
 	userDatabase := databases.NewUserDatabase()
 
 	// Init server
 	pingServer := servers.NewPingServer()
-	userServer := servers.NewUserServer(config, mysql, redisCache, kafkaQueue, userDatabase)
+	userServer := servers.NewUserServer(config, defaultDB, redisCache, kafkaQueue, userDatabase)
 
 	go func() {
 		listener, err := net.Listen("tcp", serverAddr)
