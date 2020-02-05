@@ -4,12 +4,13 @@ ci-base:
 	docker build --rm -f ci.base.Dockerfile --build-arg IMAGE=$(IMAGE) -t base-$(IMAGE) .
 
 ci-lint:
-	docker build --rm -f ci.lint.Dockerfile --build-arg IMAGE=$(IMAGE) -t lint-$(IMAGE) .
-	docker run --rm -i lint-$(IMAGE)
+	docker run --rm -i base-$(IMAGE) bash -c "make lint"
 
-ci-test:
-	docker build --rm -f ci.test.Dockerfile --build-arg IMAGE=$(IMAGE) -t test-$(IMAGE) .
-	docker run --rm -i test-$(IMAGE)
+ci-unit-test:
+	docker run --rm -i base-$(IMAGE) bash -c "make test"
+
+ci-integration-test:
+	docker-compose -f ci.test.docker-compose.yml up test
 
 ci-build:
 	docker build --rm -f ci.build.Dockerfile --build-arg IMAGE=$(IMAGE) -t $(IMAGE) .

@@ -20,10 +20,17 @@ pipeline {
                 }
             }
         }
-        stage('test') {
+        stage('unit-test') {
             steps {
                 script {
-                    sh 'make ci-test'
+                    sh 'make ci-unit-test'
+                }
+            }
+        }
+        stage('integration-test') {
+            steps {
+                script {
+                    sh 'make ci-integration-test'
                 }
             }
         }

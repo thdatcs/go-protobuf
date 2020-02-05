@@ -10,14 +10,6 @@
   version = "v0.3.1"
 
 [[projects]]
-  digest = "1:63365cc19727fc5f786d5d95079016b3601120c9699543abae2d5d0bff139109"
-  name = "github.com/DATA-DOG/go-sqlmock"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "7d7fc89ac4d6e7994c74cf16a6cb774b0374f2f9"
-  version = "v1.4.1"
-
-[[projects]]
   digest = "1:05705adc86e7ba79c48d17cfbe1760e41d227f43e2880345dd7226e0ce67e4be"
   name = "github.com/Shopify/sarama"
   packages = ["."]
@@ -715,7 +707,6 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/DATA-DOG/go-sqlmock",
     "github.com/Shopify/sarama",
     "github.com/go-redis/redis",
     "github.com/go-sql-driver/mysql",

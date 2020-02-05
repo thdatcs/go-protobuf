@@ -1,0 +1,29 @@
+serverPort: 10000
+gatewayHost: 
+gatewayPort: 10001
+
+mysql:
+  host: "mysql"
+  port: 3306
+  username: docker
+  password: docker
+  database: temp
+
+redis:
+  host: "redis"
+  port: 6379
+  password: ""
+  database: 0
+
+kafkaProducers:
+  auth:
+    version: "2.3.0"
+    brokers:
+      - "kafka:9092"
+    topics:
+      - "go-protobuf"
+
+jaeger:
+  host: "jaeger"
+  port: 6831
+  name: "go-protobuf"

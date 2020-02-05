@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "14dc6d4f-d012-4553-a764-0f82755be627",
+		"name": "go-protobuf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create-user-200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cdcc0b67-793c-4259-b33d-9e22fa8a2b53",
+						"exec": [
+							"pm.test(\"Status 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"abc\", \"password\": \"abc\", \"fullname\": \"abc\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/v1/user",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-user-200",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "39577bdd-cbff-4b80-8a92-6deb368dbedf",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "63febb6b-f579-41f8-87ce-e1780c61fa85",
+						"exec": [
+							"pm.test(\"Status 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body match\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"username\", \"abc\");",
+							"    pm.expect(jsonData).to.have.property(\"password\", \"abc\");",
+							"    pm.expect(jsonData).to.have.property(\"fullname\", \"abc\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/v1/user/abc",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-user-404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d5ef264-1b72-4205-af90-fabd8b4ac351",
+						"exec": [
+							"pm.test(\"Status 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/v1/user/xyz",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"xyz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-user-200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65f9615f-9a4d-4c04-807d-da40f18665bf",
+						"exec": [
+							"pm.test(\"Status 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"fullname\":\"xyz\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/v1/user/abc",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-user-404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "940f9657-4786-41fb-9077-fcdd04bbe351",
+						"exec": [
+							"pm.test(\"Status 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"fullname\": \"xyz\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/v1/user/xyz",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"xyz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-user-200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b94bc9d-6428-4cf2-bf1b-ff0e6be5d7df",
+						"exec": [
+							"pm.test(\"Status 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/v1/user/abc",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-user-404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "29c81344-c538-45e2-af6d-f34ce9b2d1b9",
+						"exec": [
+							"pm.test(\"Status 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/v1/user/xyz",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"user",
+						"xyz"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

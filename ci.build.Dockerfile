@@ -13,5 +13,5 @@ FROM alpine:latest
 RUN mkdir -p /app
 WORKDIR /app
 RUN apk add --no-cache ca-certificates openssl
-COPY --from=builder /go/build /app
+COPY --from=base-${IMAGE} /go/build /app
 CMD ["./go-protobuf", "-configFile=config.yaml"]
