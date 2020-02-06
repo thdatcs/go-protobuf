@@ -81,8 +81,8 @@ func main() {
 		// return
 	}
 	zap.S().Info("Jaeger connected")
-	serverAddr := fmt.Sprintf("%s:%d", "localhost", config.ServerPort)
-	gatewayAddr := fmt.Sprintf("%s:%d", config.GatewayHost, config.GatewayPort)
+	serverAddr := fmt.Sprintf("%s:%d", config.Host, config.ServerPort)
+	gatewayAddr := fmt.Sprintf("%s:%d", config.Host, config.GatewayPort)
 
 	// Init adapter
 	// Init cache

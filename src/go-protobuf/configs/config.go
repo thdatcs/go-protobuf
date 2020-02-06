@@ -2,15 +2,15 @@ package configs
 
 // Config represents all configurations
 type Config struct {
-	ServerPort          int
-	GatewayHost         string
-	GatewayPort         int
-	MySQL               mysql
-	Redis               redis
-	Jaeger              jaeger
-	KafkaConsumer       kafkaConsumer
-	KafkaProducers      map[string]kafkaProducer
-	RabbitMQ            rabbitmq
+	Host           string
+	ServerPort     int
+	GatewayPort    int
+	MySQL          mysql
+	Redis          redis
+	Jaeger         jaeger
+	KafkaConsumer  kafkaConsumer
+	KafkaProducers map[string]kafkaProducer
+	RabbitMQ       rabbitmq
 }
 
 type mysql struct {

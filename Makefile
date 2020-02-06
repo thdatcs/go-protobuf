@@ -29,9 +29,12 @@ lint:
 	bash $(GOPATH)/scripts/golangci-lint.sh $(PKGS)
 	bash $(GOPATH)/scripts/golint.sh $(PKGS)
 
-test:
+unit-test:
 	GOPATH=${GOPATH} go test ${TESTPKGS} -v
 	GOPATH=${GOPATH} go test -cover ${TESTPKGS}
+
+integration-test:
+	cd $(GOPATH)/src/go-protobuf/integrations && newman run go-protobuf.postman_collection.json -e go-protobuf.postman_environment.json
 
 build:
 	cd $(GOPATH)/src/go-protobuf/cmd && CGO_ENABLED=0 GOOS=linux GOPATH=$(GOPATH) go build -a -installsuffix cgo -o go-protobuf .

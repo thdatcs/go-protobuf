@@ -7,10 +7,10 @@ ci-lint:
 	docker run --rm -i base-$(IMAGE) bash -c "make lint"
 
 ci-unit-test:
-	docker run --rm -i base-$(IMAGE) bash -c "make test"
+	docker run --rm -i base-$(IMAGE) bash -c "make unit-test"
 
 ci-integration-test:
-	docker-compose -f ci.test.docker-compose.yml up test
+	docker-compose -f ci.test.docker-compose.yml up integration-test
 
 ci-build:
 	docker build --rm -f ci.build.Dockerfile --build-arg IMAGE=$(IMAGE) -t $(IMAGE) .

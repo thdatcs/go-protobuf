@@ -12,12 +12,17 @@
 
 ## Run project
 ### 1. Requirements
-- MySQL: database
+- MySQL: Database
 - Redis: Cache
 - Kafka: Queue
 - Jaeger: Tracing
+- Newman: Testing
+- Jenkins: CI/CD
 ### 2. Run
+#### 2.1. Manual
 - Setup environment (MySQL/Redis/Kafka/Jaeger): `docker-compose up`
 - Run database script `src/[project name]/migrations/*.sql`
 - Build image: `docker build -t [image name] -f [docker file] .`
 - Run image: `docker run --network=host --volume [path]/config.yml:/app/config.yaml [image name]`
+#### 2.2. CI/CD
+- Jenkins

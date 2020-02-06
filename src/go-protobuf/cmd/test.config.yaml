@@ -1,5 +1,5 @@
+host: 
 serverPort: 10000
-gatewayHost: 
 gatewayPort: 10001
 
 mysql:

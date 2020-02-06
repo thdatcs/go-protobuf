@@ -1,10 +1,10 @@
 version: "3"
 services:
-  test:
+  integration-test:
     image: postman/newman:ubuntu
     entrypoint: /bin/bash -c "/bin/bash -c \"$${@}\""
     command: /bin/bash -c "sleep 10 && 
-        newman run go-protobuf.postman_collection.json -e go-protobuf.postman_environment.json"
+        newman run go-protobuf.postman_collection.json -e test.go-protobuf.postman_environment.json"
     volumes:
       - ./src/go-protobuf/integrations/:/etc/newman
     depends_on:
@@ -14,7 +14,7 @@ services:
     image: base-thdatcs/go-protobuf
     command: bash -c "make run"
     volumes:
-      - ./src/go-protobuf/integrations/go-protobuf.config.yaml:/go/src/go-protobuf/cmd/config.yaml
+      - ./src/go-protobuf/cmd/test.config.yaml:/go/src/go-protobuf/cmd/config.yaml
     depends_on: 
       - mysql
       - redis
