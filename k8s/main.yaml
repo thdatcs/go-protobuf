@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: go-protobuf
-        image: thdatcs/go-protobuf:68
+        image: thdatcs/go-protobuf
         imagePullPolicy: Always
         ports:
         - name: http
