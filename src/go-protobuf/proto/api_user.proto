@@ -8,27 +8,27 @@ import "dto_user.proto";
 service User {
     rpc GetUser(GetUserRequest) returns (GetUserResponse) {
         option (google.api.http) = {
-            get: "/v1/user/{username}"
+            get: "/go-protobuf/external/v1/user/{username}"
         };
     }
 
     rpc CreateUser(CreateUserRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            post: "/v1/user"
+            post: "/go-protobuf/external/v1/user"
             body: "*"
         };
     }
 
     rpc UpdateUser(UpdateUserRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/v1/user/{username}"
+            put: "/go-protobuf/external/v1/user/{username}"
             body: "*"
         };
     }
 
     rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            delete: "/v1/user/{username}"
+            delete: "/go-protobuf/external/v1/user/{username}"
         };
     }
 }

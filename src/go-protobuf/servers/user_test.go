@@ -121,7 +121,11 @@ func (suite *UserServerTestSuite) TestGetUser() {
 	for _, test := range tests {
 		suite.T().Run(test.name, func(t *testing.T) {
 			userServer := NewUserServer(nil, test.mocks.db, nil, nil, test.mocks.userDatabase)
-			if response, err := userServer.GetUser(test.args.ctx, test.args.request); !suite.Assert().Equal(response, test.want) && !suite.Assert().Equal(err, test.wantErr) {
+			response, err := userServer.GetUser(test.args.ctx, test.args.request)
+			if !suite.Assert().Equal(response, test.want) {
+				t.Errorf("userServer.GetUser() = (%v, %v), want (%v, %v)", response, err, test.want, test.wantErr)
+			}
+			if !suite.Assert().Equal(err, test.wantErr) {
 				t.Errorf("userServer.GetUser() = (%v, %v), want (%v, %v)", response, err, test.want, test.wantErr)
 			}
 		})
@@ -205,7 +209,11 @@ func (suite *UserServerTestSuite) TestCreateUser() {
 	for _, test := range tests {
 		suite.T().Run(test.name, func(t *testing.T) {
 			userServer := NewUserServer(nil, test.mocks.db, nil, nil, test.mocks.userDatabase)
-			if response, err := userServer.CreateUser(test.args.ctx, test.args.request); !suite.Assert().Equal(response, test.want) && !suite.Assert().Equal(err, test.wantErr) {
+			response, err := userServer.CreateUser(test.args.ctx, test.args.request)
+			if !suite.Assert().Equal(response, test.want) {
+				t.Errorf("userServer.CreateUser() = (%v, %v), want (%v, %v)", response, err, test.want, test.wantErr)
+			}
+			if !suite.Assert().Equal(err, test.wantErr) {
 				t.Errorf("userServer.CreateUser() = (%v, %v), want (%v, %v)", response, err, test.want, test.wantErr)
 			}
 		})
@@ -318,7 +326,11 @@ func (suite *UserServerTestSuite) TestUpdateUser() {
 	for _, test := range tests {
 		suite.T().Run(test.name, func(t *testing.T) {
 			userServer := NewUserServer(nil, test.mocks.db, nil, nil, test.mocks.userDatabase)
-			if response, err := userServer.UpdateUser(test.args.ctx, test.args.request); !suite.Assert().Equal(response, test.want) && !suite.Assert().Equal(err, test.wantErr) {
+			response, err := userServer.UpdateUser(test.args.ctx, test.args.request)
+			if !suite.Assert().Equal(response, test.want) {
+				t.Errorf("userServer.UpdateUser() = (%v, %v), want (%v, %v)", response, err, test.want, test.wantErr)
+			}
+			if !suite.Assert().Equal(err, test.wantErr) {
 				t.Errorf("userServer.UpdateUser() = (%v, %v), want (%v, %v)", response, err, test.want, test.wantErr)
 			}
 		})
@@ -413,7 +425,11 @@ func (suite *UserServerTestSuite) TestDeleteUser() {
 	for _, test := range tests {
 		suite.T().Run(test.name, func(t *testing.T) {
 			userServer := NewUserServer(nil, test.mocks.db, nil, nil, test.mocks.userDatabase)
-			if response, err := userServer.DeleteUser(test.args.ctx, test.args.request); !suite.Assert().Equal(response, test.want) && !suite.Assert().Equal(err, test.wantErr) {
+			response, err := userServer.DeleteUser(test.args.ctx, test.args.request)
+			if !suite.Assert().Equal(response, test.want) {
+				t.Errorf("userServer.DeleteUser() = (%v, %v), want (%v, %v)", response, err, test.want, test.wantErr)
+			}
+			if !suite.Assert().Equal(err, test.wantErr) {
 				t.Errorf("userServer.DeleteUser() = (%v, %v), want (%v, %v)", response, err, test.want, test.wantErr)
 			}
 		})

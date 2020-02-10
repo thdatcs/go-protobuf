@@ -1,13 +1,13 @@
+host: 
 serverPort: 10000
-gatewayHost: localhost
 gatewayPort: 10001
 
 mysql:
   host: "localhost"
   port: 3306
-  username: docker
-  password: docker
-  database: temp
+  username: "docker"
+  password: "docker"
+  database: "temp"
 
 redis:
   host: "localhost"

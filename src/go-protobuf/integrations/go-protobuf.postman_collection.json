@@ -41,12 +41,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{host}}/v1/user",
+					"raw": "http://{{host}}/go-protobuf/external/v1/user",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
+						"go-protobuf",
+						"external",
 						"v1",
 						"user"
 					]
@@ -90,12 +92,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{host}}/v1/user/abc",
+					"raw": "http://{{host}}/go-protobuf/external/v1/user/abc",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
+						"go-protobuf",
+						"external",
 						"v1",
 						"user",
 						"abc"
@@ -124,12 +128,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{host}}/v1/user/xyz",
+					"raw": "http://{{host}}/go-protobuf/external/v1/user/xyz",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
+						"go-protobuf",
+						"external",
 						"v1",
 						"user",
 						"xyz"
@@ -174,12 +180,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{host}}/v1/user/abc",
+					"raw": "http://{{host}}/go-protobuf/external/v1/user/abc",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
+						"go-protobuf",
+						"external",
 						"v1",
 						"user",
 						"abc"
@@ -224,12 +232,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{host}}/v1/user/xyz",
+					"raw": "http://{{host}}/go-protobuf/external/v1/user/xyz",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
+						"go-protobuf",
+						"external",
 						"v1",
 						"user",
 						"xyz"
@@ -258,12 +268,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://{{host}}/v1/user/abc",
+					"raw": "http://{{host}}/go-protobuf/external/v1/user/abc",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
+						"go-protobuf",
+						"external",
 						"v1",
 						"user",
 						"abc"
@@ -292,12 +304,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://{{host}}/v1/user/xyz",
+					"raw": "http://{{host}}/go-protobuf/external/v1/user/xyz",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
+						"go-protobuf",
+						"external",
 						"v1",
 						"user",
 						"xyz"

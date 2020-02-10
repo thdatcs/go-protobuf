@@ -15,6 +15,10 @@ func NewPingServer() api.PingServer {
 	return &pingServer{}
 }
 
-func (s *pingServer) Ping(ctx context.Context, request *empty.Empty) (*empty.Empty, error) {
+func (s *pingServer) Live(ctx context.Context, request *empty.Empty) (*empty.Empty, error) {
+	return &empty.Empty{}, nil
+}
+
+func (s *pingServer) Ready(ctx context.Context, request *empty.Empty) (*empty.Empty, error) {
 	return &empty.Empty{}, nil
 }

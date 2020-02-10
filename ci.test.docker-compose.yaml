@@ -1,0 +1,51 @@
+version: "3"
+services:
+  integration-test:
+    image: postman/newman:ubuntu
+    entrypoint: /bin/bash -c "/bin/bash -c \"$${@}\""
+    command: /bin/bash -c "sleep 10 && 
+        newman run go-protobuf.postman_collection.json -e test.go-protobuf.postman_environment.json"
+    volumes:
+      - ./src/go-protobuf/integrations/:/etc/newman
+    depends_on:
+      - service
+
+  service:
+    image: base-thdatcs/go-protobuf
+    command: bash -c "make run"
+    volumes:
+      - ./src/go-protobuf/cmd/test.config.yaml:/go/src/go-protobuf/cmd/config.yaml
+    depends_on: 
+      - mysql
+      - redis
+      - kafka
+      - jaeger
+
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: temp
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+    volumes:
+      - ./src/go-protobuf/migrations/:/docker-entrypoint-initdb.d/
+    
+  redis:
+    image: redis
+  
+  zookeeper:
+    image: wurstmeister/zookeeper
+
+  kafka:
+    image: wurstmeister/kafka
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    depends_on: 
+      - zookeeper
+
+  jaeger:
+    image: jaegertracing/all-in-one
+    ports:
+      - "16686:16686"

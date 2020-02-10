@@ -5,9 +5,15 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
 service Ping {
-    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {
+    rpc Live(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            get: "/v1/ping"
+            get: "/go-protobuf/internal/v1/live"
+        };
+    }
+
+    rpc Ready(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            get: "/go-protobuf/internal/v1/ready"
         };
     }
 }

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: go-protobuf-config
+data:
+  config.yaml: |
+    host: 
+    serverPort: 10000
+    gatewayPort: 10001
+    mysql:
+      host: 192.168.99.1
+      port: 3306
+      username: docker
+      password: docker
+      database: temp
+    redis:
+      host: 192.168.99.1
+      port: 6379
+      password: 
+      database: 0
+    jaeger:
+      host: 192.168.99.1
+      port: 6831
+      name: go-protobuf
+    

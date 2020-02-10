@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-protobuf
+spec:
+  progressDeadlineSeconds: 120
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1        # how many pods we can add at a time
+      maxUnavailable: 0  # maxUnavailable define how many pods can be unavailable # during the rolling update
+  selector:
+    matchLabels:
+      name: go-protobuf
+  template:
+    metadata:
+      name: go-protobuf
+      labels:
+        name: go-protobuf
+    spec:
+      containers:
+      - name: go-protobuf
+        image: thdatcs/go-protobuf:68
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 10001
+        livenessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /go-protobuf/internal/v1/ping/live
+            port: 10001
+          periodSeconds: 1
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /go-protobuf/internal/v1/ping/ready
+            port: 10001
+          periodSeconds: 1
+        volumeMounts:
+        - name: go-protobuf-config-volume
+          mountPath: /app/config.yaml
+          subPath: config.yaml
+          readOnly: true
+      volumes:
+        - name: go-protobuf-config-volume
+          configMap:
+            name: go-protobuf-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: go-protobuf
+  name: go-protobuf
+spec:
+  ports:
+  - name: http
+    port: 10001
+    targetPort: 10001
+  selector:
+    name: go-protobuf
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: go-protobuf
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /go-protobuf
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /go-protobuf
+          backend:
+            serviceName: go-protobuf
+            servicePort: 10001
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: go-protobuf
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: go-protobuf
+  minReplicas: 2
+  maxReplicas: 10
+  metrics: 
+  - type: Resource 
+    resource: 
+      name: cpu 
+      targetAverageUtilization: 50

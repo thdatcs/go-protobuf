@@ -13,7 +13,7 @@ prepare:
 	GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get -v -u github.com/rakyll/statik
 	GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get -v -u golang.org/x/lint/golint
 	GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get -v -u github.com/golangci/golangci-lint/cmd/golangci-lint
-	GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get github.com/vektra/mockery/.../
+	GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get -v -u github.com/vektra/mockery/.../
 	GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get -v -u github.com/golang/protobuf/protoc-gen-go
 	GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get -v -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 	GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get -v -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger

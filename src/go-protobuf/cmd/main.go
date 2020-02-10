@@ -155,7 +155,7 @@ func main() {
 
 		mux := http.NewServeMux()
 		mux.Handle("/", gwmux)
-		mux.Handle("/swagger-ui/", http.StripPrefix("/swagger-ui/", http.FileServer(statik)))
+		mux.Handle("/go-protobuf/internal/swagger-ui/", http.StripPrefix("/go-protobuf/internal/swagger-ui/", http.FileServer(statik)))
 
 		gateway := &http.Server{
 			Addr:    gatewayAddr,

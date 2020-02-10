@@ -14,3 +14,8 @@ ci-integration-test:
 
 ci-build:
 	docker build --rm -f ci.build.Dockerfile --build-arg IMAGE=$(IMAGE) -t $(IMAGE) .
+
+ci-deploy:
+	# Deploy into local kubernetes
+	kubectl apply -f k8s/config.yaml
+	kubectl apply -f k8s/main.yaml

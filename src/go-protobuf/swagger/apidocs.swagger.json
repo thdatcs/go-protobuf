@@ -14,23 +14,7 @@
     "application/json"
   ],
   "paths": {
-    "/v1/ping": {
-      "get": {
-        "operationId": "Ping",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "properties": {}
-            }
-          }
-        },
-        "tags": [
-          "Ping"
-        ]
-      }
-    },
-    "/v1/user": {
+    "/go-protobuf/external/v1/user": {
       "post": {
         "operationId": "CreateUser",
         "responses": {
@@ -56,7 +40,7 @@
         ]
       }
     },
-    "/v1/user/{username}": {
+    "/go-protobuf/external/v1/user/{username}": {
       "get": {
         "operationId": "GetUser",
         "responses": {
@@ -129,6 +113,38 @@
         ],
         "tags": [
           "User"
+        ]
+      }
+    },
+    "/go-protobuf/internal/v1/live": {
+      "get": {
+        "operationId": "Live",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "tags": [
+          "Ping"
+        ]
+      }
+    },
+    "/go-protobuf/internal/v1/ready": {
+      "get": {
+        "operationId": "Ready",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "tags": [
+          "Ping"
         ]
       }
     }

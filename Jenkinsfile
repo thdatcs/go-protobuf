@@ -47,7 +47,15 @@ pipeline {
                     docker.withRegistry(registryURL, registryCredential) {
                         image = docker.image(registryRepository)
                         image.push("${env.BUILD_NUMBER}")
+                        image.push("latest")
                     }
+                }
+            }
+        }
+        stage('depoy') {
+            steps {
+                script {
+                    sh 'make ci-deploy'
                 }
             }
         }
